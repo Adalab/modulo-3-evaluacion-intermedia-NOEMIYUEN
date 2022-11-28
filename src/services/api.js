@@ -1,7 +1,7 @@
-function fetchWord() {
-  return fetch('https://dev.adalab.es/api/random/word').then((response) =>
-    response.json()
-  );
+function fetchAdalaber() {
+  return fetch(
+    'https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/adalabers-v1/promo-radsajsd.json'
+  ).then((response) => response.json());
 }
 
-export default fetchWord;
+export default fetchAdalaber;

@@ -1,0 +1,23 @@
+.main {
+  display:flex;
+  justify-content: center;
+
+}
+.table {
+  margin: 20px;
+  text-align: center;
+  width: 80%;
+  &__head {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 2rem;
+    background-color: pink;
+  }
+  &__body {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+
+
