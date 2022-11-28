@@ -2,9 +2,21 @@
 .header {
   height:100px;
   padding: 20px;
-  font-size: 2rem;
-  font-weight: 600;
   color:rgb(214, 65, 170);
+
+  &__title{
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  &__form{
+    margin: 20px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+  }
 }
+
 
 
