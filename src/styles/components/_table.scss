@@ -9,7 +9,9 @@
   margin: 20px;
   text-align: center;
   width: 80%;
+  padding-left: 20px;;
   &__head {
+    text-align: left;
     font-size: 1rem;
     font-weight: 600;
     line-height: 2rem;
@@ -17,7 +19,11 @@
   }
   &__body {
     font-size: 1rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
+    &--item {
+      text-align: left;
+      border-bottom: 1px solid pink;
+    }
   }
 }
 

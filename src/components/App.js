@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import fetchAdalaber from '../services/api';
-import ls from '../services/localstorage';
 
 import '../styles/App.scss';
 
@@ -63,7 +62,7 @@ function App() {
     )
     .map((adalaber) => {
       return (
-        <tr key={adalaber.id}>
+        <tr key={adalaber.id} className="table__body--item">
           <td>{adalaber.name}</td>
           <td>{adalaber.counselor}</td>
           <td>{adalaber.speciality}</td>
@@ -121,12 +120,12 @@ function App() {
         </section>
         <section className="add">
           <h2 className="add__title">Añadir una Adalaber</h2>
-          <form className="form" action="">
+          <form className="addform" action="">
             <div className="labelInput">
               <label htmlFor="name"> Nombre: </label>
               <input
                 type="text"
-                className="add__form--input"
+                className="addform__element"
                 name="name"
                 id="name"
                 onChange={handleCollect}
@@ -137,7 +136,7 @@ function App() {
               <label htmlFor="counselor"> Tutora: </label>
               <input
                 type="text"
-                className="add__form--input"
+                className="addform__element"
                 name="counselor"
                 id="counselor"
                 onChange={handleCollect}
@@ -148,7 +147,7 @@ function App() {
               <label htmlFor="speciality"> Especialidad: </label>
               <input
                 type="text"
-                className="add__form--input"
+                className="addform__element"
                 name="speciality"
                 id="speciality"
                 onChange={handleCollect}
@@ -157,7 +156,7 @@ function App() {
             </div>
             <input
               type="submit"
-              className="add__form--input"
+              className="addform__submit"
               value="Añadir una nueva Adalaber"
               onClick={handleAdd}
             />
