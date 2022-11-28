@@ -7,6 +7,10 @@ import '../styles/App.scss';
 function App() {
   // VARIABLES ESTADO
   const [adalabers, setAdalabers] = useState([]);
+  const [search, setSearch] = useState({
+    name: '',
+    counselor: '',
+  });
   const [addAdalaber, setaddAdalaber] = useState({
     name: '',
     counselor: '',
@@ -26,24 +30,36 @@ function App() {
   const handleCollect = (event) => {
     event.preventDefault();
     setaddAdalaber({ ...addAdalaber, [event.target.name]: event.target.value });
-    console.log(addAdalaber);
   };
 
   const handleAdd = (event) => {
     event.preventDefault();
     adalabers.push(addAdalaber);
     setAdalabers([...adalabers]);
-    console.log(adalabers);
     setaddAdalaber({
       name: '',
       counselor: '',
       speciality: '',
     });
   };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    setSearch({ ...search, [event.target.name]: event.target.value });
+    console.log(search);
+  };
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR HTML
 
-  const renderAdalabers = () => {
-    return adalabers.map((adalaber) => {
+  const renderAdalabers = adalabers
+    .filter((element) =>
+      element.name.toLowerCase().includes(search.name.toLocaleLowerCase())
+    )
+    .filter((element2) =>
+      element2.console
+        .toLowerCase()
+        .includes(search.counselor.toLocaleLowerCase())
+    )
+    .map((adalaber) => {
       return (
         <tr key={adalaber.id}>
           <td>{adalaber.name}</td>
@@ -52,7 +68,6 @@ function App() {
         </tr>
       );
     });
-  };
 
   // HTML EN EL RETURN
 
@@ -60,28 +75,33 @@ function App() {
     <div className="App">
       <header className="header">
         <h1 className="header__title">Adalabers</h1>
-        <form action="" className="header__form">
+        <form action="" className="searchForm">
           <div className="labelInput">
-            <label htmlFor="counselor"> Nombre: </label>
+            <label htmlFor="counselorAdd"> Nombre: </label>
             <input
-              type="text"
-              className="add__form--input"
-              name="counselor"
-              id="counselor"
-              onChange={handleCollect}
-              value={addAdalaber.counselor}
+              type="search"
+              className="searchForm__element"
+              name="name"
+              id="counselorAdd"
+              onChange={handleSearch}
+              value={search.name}
             />
           </div>
           <div className="labelInput">
             <label htmlFor="counselor"> Escoge una tutora: </label>
-            <input
-              type="text"
-              className="add__form--input"
+            <select
+              className="searchForm__element"
+              type="select"
               name="counselor"
-              id="counselor"
-              onChange={handleCollect}
-              value={addAdalaber.counselor}
-            />
+              /* onChange={handleCollect}
+              value={search.counselor} */
+            >
+              <option value="all">Cualquiera</option>
+              <option value="Yanelis">Yanelis</option>
+              <option value="Dayana">Dayana</option>
+              <option value="Joey">Joey</option>
+              <option value="Iván">Iván</option>
+            </select>
           </div>
         </form>
       </header>
@@ -95,7 +115,7 @@ function App() {
                 <th>Especialidad</th>
               </tr>
             </thead>
-            <tbody className="table__body">{renderAdalabers()}</tbody>
+            <tbody className="table__body">{renderAdalabers}</tbody>
           </table>
         </section>
         <section className="add">
