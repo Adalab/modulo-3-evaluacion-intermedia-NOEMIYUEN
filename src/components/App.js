@@ -39,14 +39,16 @@ function App() {
     setaddAdalaber({
       name: '',
       counselor: '',
-      speciality: '',
     });
   };
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setSearch({ ...search, [event.target.name]: event.target.value });
-    console.log(search);
+    if (event.target.value !== 'All') {
+      setSearch({ ...search, [event.target.name]: event.target.value });
+    } else {
+      setSearch({ name: search.name, counselor: '' });
+    }
   };
   // FUNCIONES Y VARIABLES QUE AYUDEN A RENDERIZAR HTML
 
@@ -54,8 +56,8 @@ function App() {
     .filter((element) =>
       element.name.toLowerCase().includes(search.name.toLocaleLowerCase())
     )
-    .filter((element2) =>
-      element2.console
+    .filter((element) =>
+      element.counselor
         .toLowerCase()
         .includes(search.counselor.toLocaleLowerCase())
     )
@@ -93,13 +95,12 @@ function App() {
               className="searchForm__element"
               type="select"
               name="counselor"
-              /* onChange={handleCollect}
-              value={search.counselor} */
+              onChange={handleSearch}
+              value={search.counselor}
             >
-              <option value="all">Cualquiera</option>
+              <option value="All">Cualquiera</option>
               <option value="Yanelis">Yanelis</option>
               <option value="Dayana">Dayana</option>
-              <option value="Joey">Joey</option>
               <option value="Iván">Iván</option>
             </select>
           </div>
