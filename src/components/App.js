@@ -4,7 +4,7 @@ import fetchAdalaber from '../services/api';
 import '../styles/App.scss';
 
 function App() {
-  // VARIABLES ESTADO
+  // VARIABLES ESTADO y otras
   const [adalabers, setAdalabers] = useState([]);
   const [search, setSearch] = useState({
     name: '',
@@ -16,6 +16,8 @@ function App() {
     counselor: '',
     speciality: '',
   });
+
+  const [fillMessage, setFillMessage] = useState('');
 
   // USEEFFECT
 
@@ -43,6 +45,9 @@ function App() {
         counselor: '',
         speciality: '',
       });
+      setFillMessage('');
+    } else {
+      setFillMessage('Porfavor, rellena todos los campos ;)');
     }
   };
 
@@ -92,30 +97,6 @@ function App() {
         </tr>
       );
     });
-
-  const notEmpty = (parameter) => {
-    if (parameter !== '') {
-    }
-  };
-
-  /*   const socialrender = (adalaber) => {
-    if (adalaber.social_networks) {
-      adalaber.social_networks.map((each, index) => {
-        return (
-          <a
-            key={index}
-            title={`to ${each.name}`}
-            href={each.url}
-            className="socialLink"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {each.name}
-          </a>
-        );
-      });
-    }
-  }; */
 
   // HTML EN EL RETURN
 
@@ -208,6 +189,7 @@ function App() {
               value="Añadir una nueva Adalaber"
               onClick={handleAdd}
             />
+            <p className="addform__message"> {fillMessage} </p>
           </form>
         </section>
       </main>
