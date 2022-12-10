@@ -11,6 +11,7 @@ function App() {
     counselor: '',
   });
   const [addAdalaber, setaddAdalaber] = useState({
+    id: crypto.randomUUID(),
     name: '',
     counselor: '',
     speciality: '',
@@ -33,13 +34,16 @@ function App() {
 
   const handleAdd = (event) => {
     event.preventDefault();
-    adalabers.push(addAdalaber);
-    setAdalabers([...adalabers]);
-    setaddAdalaber({
-      name: '',
-      counselor: '',
-      speciality: '',
-    });
+    if (addAdalaber.name && addAdalaber.counselor && addAdalaber.speciality) {
+      adalabers.push(addAdalaber);
+      setAdalabers([...adalabers]);
+      setaddAdalaber({
+        id: crypto.randomUUID(),
+        name: '',
+        counselor: '',
+        speciality: '',
+      });
+    }
   };
 
   const handleSearch = (event) => {
