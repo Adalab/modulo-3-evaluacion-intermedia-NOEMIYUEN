@@ -71,7 +71,7 @@ function App() {
           <td>{adalaber.name}</td>
           <td>{adalaber.counselor}</td>
           <td>{adalaber.speciality}</td>
-          {
+          {adalaber.social_networks ? (
             <td>
               {adalaber.social_networks.map((each, index) => {
                 return (
@@ -88,10 +88,34 @@ function App() {
                 );
               })}
             </td>
-          }
+          ) : null}
         </tr>
       );
     });
+
+  const notEmpty = (parameter) => {
+    if (parameter !== '') {
+    }
+  };
+
+  /*   const socialrender = (adalaber) => {
+    if (adalaber.social_networks) {
+      adalaber.social_networks.map((each, index) => {
+        return (
+          <a
+            key={index}
+            title={`to ${each.name}`}
+            href={each.url}
+            className="socialLink"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {each.name}
+          </a>
+        );
+      });
+    }
+  }; */
 
   // HTML EN EL RETURN
 
