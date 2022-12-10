@@ -71,6 +71,24 @@ function App() {
           <td>{adalaber.name}</td>
           <td>{adalaber.counselor}</td>
           <td>{adalaber.speciality}</td>
+          {
+            <td>
+              {adalaber.social_networks.map((each, index) => {
+                return (
+                  <a
+                    key={index}
+                    title={`to ${each.name}`}
+                    href={each.url}
+                    className="socialLink"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {each.name}
+                  </a>
+                );
+              })}
+            </td>
+          }
         </tr>
       );
     });
@@ -118,6 +136,7 @@ function App() {
                 <th>Nombre</th>
                 <th>Tutora</th>
                 <th>Especialidad</th>
+                <th>Redes</th>
               </tr>
             </thead>
             <tbody className="table__body">{renderAdalabers}</tbody>
